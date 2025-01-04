@@ -17,25 +17,47 @@ async function show_runtime() {
             const msPerDay = msPerHour * 24;
             const msPerYear = msPerDay * 365.25;
 
-            const years = Math.floor(timeDiff / msPerYear);
-            const days = Math.floor((timeDiff % msPerYear) / msPerDay);
-            const hours = Math.floor((timeDiff % msPerDay) / msPerHour);
-            const minutes = Math.floor((timeDiff % msPerHour) / msPerMinute);
-            const seconds = Math.floor((timeDiff % msPerMinute) / msPerSecond);
+            let years = Math.floor(timeDiff / msPerYear);
+            let days = Math.floor((timeDiff % msPerYear) / msPerDay);
+            let hours = Math.floor((timeDiff % msPerDay) / msPerHour);
+            let minutes = Math.floor((timeDiff % msPerHour) / msPerMinute);
+            let seconds = Math.floor((timeDiff % msPerMinute) / msPerSecond);
 
-            document.getElementById('runtime_span').innerHTML = "网站在各种灾难中运行了: " + 
-                years + "年 " + 
-                days + "天 " + 
-                hours + "小时 " + 
-                minutes + "分 " + 
-                seconds + "秒";
+            function updateRuntime() {
+                seconds++;
+                if (seconds >= 60) {
+                    seconds = 0;
+                    minutes++;
+                }
+                if (minutes >= 60) {
+                    minutes = 0;
+                    hours++;
+                }
+                if (hours >= 24) {
+                    hours = 0;
+                    days++;
+                }
+                if (days >= 365.25) {
+                    days = 0;
+                    years++;
+                }
+
+                document.getElementById('runtime_span').innerHTML = "网站在各种灾难中运行了: " + 
+                    years + "年 " + 
+                    days + "天 " + 
+                    hours + "小时 " + 
+                    minutes + "分 " + 
+                    seconds + "秒";
+            }
+
+            setInterval(updateRuntime, 1000);
         }
     } catch (error) {
         console.error('请求失败:', error);
     }
 }
 
-setTimeout(show_runtime, 1000);
+show_runtime();
 
 function setupNavigation() {
     document.querySelector('nav').addEventListener('click', function(e) {
@@ -53,7 +75,6 @@ function setupNavigation() {
 }
 
 window.onload = function() {
-    show_runtime();
     setupNavigation();
     document.querySelector('.section').classList.add('active');
     
