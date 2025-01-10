@@ -31,6 +31,8 @@ body {
     z-index: 500; 
     color: white;
     text-align: center;
+    background: linear-gradient(90deg, rgba(30,30,30,0.5) 0%, rgba(60,60,60,0.5) 100%);
+    border: 2px solid #007bff;
 }
 
 .center.loaded {
@@ -66,21 +68,26 @@ nav a {
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease, transform 0.3s ease;
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 
 nav a:hover {
-    color: #007bff;
+    color: #fff;
+    background-color: #007bff70;
     transform: scale(1.1);
 }
 
 img {
     border-radius: 15px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid #007bff;
 }
 
 img:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+    border: 2px solid #007bff;;
 }
 
 a {
@@ -145,27 +152,42 @@ canvas {
     position: relative;
 }
 
-/*太丑以后改下*/
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
+    background-color: #333;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+    border-radius: 5px;
+    overflow: hidden;
 }
 
 .dropdown-content a {
-    color: black;
+    color: #fff;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
+    transition: background-color 0.3s ease;
 }
 
 .dropdown-content a:hover {
-    background-color: #f1f1f1;
+    background-color: #007bff70;
 }
 
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+.navbar {
+    background: linear-gradient(90deg, rgba(30,30,30,0.5) 0%, rgba(60,60,60,0.5) 100%);
+    border-bottom: 2px solid #007bff;
+}
+
+.navbar a {
+    color: #fff;
+}
+
+.navbar a:hover {
+    color: #007bff;
 }
