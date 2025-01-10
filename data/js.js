@@ -120,3 +120,5 @@ window.onload = function() {
     draw();
     setInterval(draw, 30);
 }
+
+AOS.init();
