@@ -1,5 +1,6 @@
 //[https://github.com/xhdndmm/web]
 //[https://xhdndmm.cn/]
+
 async function show_runtime() {
     try {
         const response = await fetch('/time_api');
@@ -72,6 +73,24 @@ function setupNavigation() {
             }
         }
     });
+
+    document.querySelectorAll('nav a').forEach(navItem => {
+        navItem.addEventListener('mouseover', () => {
+            navItem.classList.add('hover');
+        });
+        navItem.addEventListener('mouseout', () => {
+            navItem.classList.remove('hover');
+        });
+    });
+
+    document.querySelectorAll('.dropdown-content a').forEach(dropdownItem => {
+        dropdownItem.addEventListener('mouseover', () => {
+            dropdownItem.classList.add('hover');
+        });
+        dropdownItem.addEventListener('mouseout', () => {
+            dropdownItem.classList.remove('hover');
+        });
+    });
 }
 
 window.onload = function() {
@@ -120,5 +139,7 @@ window.onload = function() {
     draw();
     setInterval(draw, 30);
 
-    AOS.init();
+    AOS.init({
+        duration: 1500
+    });
 }
