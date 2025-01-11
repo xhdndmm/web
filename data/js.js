@@ -75,13 +75,7 @@ function setupNavigation() {
     document.querySelector('nav').addEventListener('click', function(e) {
         if (e.target.tagName === 'A') {
             e.preventDefault();
-            document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
-            var target = document.querySelector(e.target.getAttribute('href'));
-            if (target) {
-                setTimeout(() => {
-                    target.classList.add('active');
-                }, 100); 
-            }
+            navigateToSection(e.target.getAttribute('href').substring(1));
         }
     });
 
@@ -102,6 +96,23 @@ function setupNavigation() {
             dropdownItem.classList.remove('hover');
         });
     });
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            navigateToSection(this.getAttribute('href').substring(1));
+        });
+    });
+}
+
+function navigateToSection(sectionId) {
+    document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
+    var target = document.querySelector(`[data-section="${sectionId}"]`);
+    if (target) {
+        setTimeout(() => {
+            target.classList.add('active');
+        }, 100); 
+    }
 }
 
 window.onload = function() {
