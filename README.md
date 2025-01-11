@@ -18,7 +18,7 @@ pip install psutil
 ```
 git clone https://github.com/xhdndmm/web.git
 ```
-然后修改nginx配置文件（替换括号部分）
+然后修改nginx配置文件（替换括号部分，已添加速率限制）
 ```
 user www-data;
 worker_processes auto;
@@ -38,13 +38,13 @@ http {
     server {
         listen 80;
         listen [::]:80;
-        root /home/ecs-user/web/;
+        root （网站路径）;
         index index.html;
 
-        server_name xhdndmm.cn;
+        server_name （网站域名）;
 
-        access_log /home/ecs-user/log/web_a.log;
-        error_log /home/ecs-user/log/web_e.log;
+        access_log （日志路径）;
+        error_log （日志路径）;
 
         location / {
             limit_req zone=one burst=3 nodelay;
