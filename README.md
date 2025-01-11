@@ -11,6 +11,7 @@ pip install Flask
 pip install ntplib
 pip install datetime
 pip install gunicorn 
+pip install psutil
 ```
 ### 部署
 首先克隆存储库
@@ -32,23 +33,36 @@ http {
     include /etc/nginx/mime.types;
     default_type application/octet-stream;
 
+    limit_req_zone $binary_remote_addr zone=one:10m rate=5r/s;
+
     server {
         listen 80;
         listen [::]:80;
-        root （网站根目录）;
+        root /home/ecs-user/web/;
         index index.html;
 
-        server_name （网站域名）;
+        server_name xhdndmm.cn;
 
-        access_log （日志目录）;
-        error_log （日志目录）;
+        access_log /home/ecs-user/log/web_a.log;
+        error_log /home/ecs-user/log/web_e.log;
 
         location / {
+            limit_req zone=one burst=3 nodelay;
             try_files $uri $uri/ =404;
         }
 
         location /time_api {
+            limit_req zone=one burst=3 nodelay;
             proxy_pass http://127.0.0.1:5000;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+
+            location /server_status {
+            limit_req zone=one burst=3 nodelay;
+            proxy_pass http://127.0.0.1:5001;
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -56,8 +70,13 @@ http {
         }
     }
 }
+
 ```
 进入网站根目录/time_api并运行以下命令
 ```
 gunicorn --bind 0.0.0.0:5000 main:app --daemon
+```
+进入网站根目录/server_status并运行以下命令
+```
+gunicorn --bind 0.0.0.0:5001 main:app --daemon
 ```
