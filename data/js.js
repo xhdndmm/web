@@ -155,5 +155,4 @@ window.onload = function() {
     });
 
     fetchServerStatus();
-    setInterval(fetchServerStatus, 5000); // 每5秒更新一次服务器状态
 }
