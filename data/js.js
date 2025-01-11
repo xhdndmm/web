@@ -43,7 +43,7 @@ async function show_runtime() {
                     years++;
                 }
 
-                document.getElementById('runtime_span').innerHTML = "网站在各种灾难中运行了: " + 
+                document.getElementById('runtime_span').innerHTML = 
                     years + "年 " + 
                     days + "天 " + 
                     hours + "小时 " + 
