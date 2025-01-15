@@ -60,9 +60,20 @@ async function show_runtime() {
 
 show_runtime();
 
-async function fetchServerStatus() {
+async function fetchServerStatus1() {
     try {
         const response = await fetch('/server_status');
+        const data = await response.json();
+        document.getElementById('server_status').innerText = 
+            `CPU使用率: ${data.cpu_usage}%, 内存使用率: ${data.memory_usage}%`;
+    } catch (error) {
+        console.error('获取服务器状态失败:', error);
+    }
+}
+
+async function fetchServerStatus2() {
+    try {
+        const response = await fetch('/home_server_status');
         const data = await response.json();
         document.getElementById('server_status').innerText = 
             `CPU使用率: ${data.cpu_usage}%, 内存使用率: ${data.memory_usage}%`;
@@ -165,5 +176,6 @@ window.onload = function() {
         duration: 1500
     });
 
-    fetchServerStatus();
+    fetchServerStatus1();
+    fetchServerStatus2();
 }
