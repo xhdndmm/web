@@ -135,43 +135,6 @@ window.onload = function() {
         center.classList.add('loaded');
     }, 100);
 
-    var canvas = document.getElementById("canvas");
-    canvas.style.display = 'block';
-    var context = canvas.getContext("2d");
-    var W = window.innerWidth;
-    var H = window.innerHeight;
-    canvas.width = W;
-    canvas.height = H;
-    var fontSize = 15;
-    var colunms = Math.floor(W / fontSize);  
-    var drops = [];
-    for (var i = 0; i < colunms; i++) {
-        drops.push(0);
-    }
-
-    var str = "0123456789qwertyuiopasdfghjklzxcvbnm";
-
-    function draw() {
-        context.fillStyle = "rgba(0,0,0,0.05)";
-        context.fillRect(0,0,W,H);
-        context.font = fontSize + 'px arial';
-        context.fillStyle = "green";
-
-        for (var i = 0; i < colunms; i++) {
-            var index = Math.floor(Math.random() * str.length);
-            var x = i * fontSize;
-            var y = drops[i] * fontSize;
-            context.fillText(str[index], x, y);
-            if (y >= canvas.height && Math.random() > 0.92) {
-                drops[i] = 0;
-            }
-            drops[i]++;
-        }
-    }
-
-    draw();
-    setInterval(draw, 30);
-
     AOS.init({
         duration: 1500
     });
