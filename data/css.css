@@ -141,15 +141,6 @@ iframe {
     border-radius: 8px;
 }
 
-/* 移除字符雨的 canvas 样式 */
-/* canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1; 
-    pointer-events: none;
-} */
-
 .dropdown {
     display: inline-block;
     position: relative;
