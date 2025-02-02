@@ -85,8 +85,11 @@ async function fetchHomeServerStatus() {
 function setupNavigation() {
     document.querySelector('nav').addEventListener('click', function(e) {
         if (e.target.tagName === 'A') {
-            e.preventDefault();
-            navigateToSection(e.target.getAttribute('href').substring(1));
+            const href = e.target.getAttribute('href');
+            if (href.startsWith('#')) {
+                e.preventDefault();
+                navigateToSection(href.substring(1));
+            }
         }
     });
 
