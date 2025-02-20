@@ -1,6 +1,7 @@
 //[https://github.com/xhdndmm/web]
 //[https://xhdndmm.cn/]
 
+// 显示运行时间的函数
 async function show_runtime() {
     try {
         const response = await fetch('/time_api');
@@ -24,6 +25,7 @@ async function show_runtime() {
             let minutes = Math.floor((timeDiff % msPerHour) / msPerMinute);
             let seconds = Math.floor((timeDiff % msPerMinute) / msPerSecond);
 
+            // 更新运行时间的函数
             function updateRuntime() {
                 seconds++;
                 if (seconds >= 60) {
@@ -60,6 +62,7 @@ async function show_runtime() {
 
 show_runtime();
 
+// 获取服务器状态的函数
 async function fetchServerStatus() {
     try {
         const response = await fetch('/server_status');
@@ -71,6 +74,7 @@ async function fetchServerStatus() {
     }
 }
 
+// 获取家庭服务器状态的函数
 async function fetchHomeServerStatus() {
     try {
         const response = await fetch('/home_server_status');
@@ -82,6 +86,7 @@ async function fetchHomeServerStatus() {
     }
 }
 
+// 设置导航的函数
 function setupNavigation() {
     document.querySelector('nav').addEventListener('click', function(e) {
         if (e.target.tagName === 'A') {
@@ -119,6 +124,7 @@ function setupNavigation() {
     });
 }
 
+// 导航到指定部分的函数
 function navigateToSection(sectionId) {
     document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
     var target = document.querySelector(`[data-section="${sectionId}"]`);
@@ -129,6 +135,7 @@ function navigateToSection(sectionId) {
     }
 }
 
+// 页面加载完成后的初始化函数
 window.onload = function() {
     setupNavigation();
     document.querySelector('.section').classList.add('active');
