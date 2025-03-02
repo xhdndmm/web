@@ -67,7 +67,3 @@ http {
 ```
 gunicorn --bind 0.0.0.0:5000 main:app --daemon
 ```
-进入网站根目录/server_status并运行以下命令
-```
-gunicorn --bind 0.0.0.0:5001 main:app --daemon
-```
