@@ -62,30 +62,6 @@ async function show_runtime() {
 
 show_runtime();
 
-// 获取服务器状态的函数
-async function fetchServerStatus() {
-    try {
-        const response = await fetch('/server_status');
-        const data = await response.json();
-        document.getElementById('server_status').innerText = 
-            `CPU使用率: ${data.cpu_usage}%, 内存使用率: ${data.memory_usage}%`;
-    } catch (error) {
-        console.error('获取服务器状态失败:', error);
-    }
-}
-
-// 获取家庭服务器状态的函数
-async function fetchHomeServerStatus() {
-    try {
-        const response = await fetch('/home_server_status');
-        const data = await response.json();
-        document.getElementById('home_server_status').innerText = 
-            `CPU使用率: ${data.cpu_usage}%, 内存使用率: ${data.memory_usage}%`;
-    } catch (error) {
-        console.error('获取服务器状态失败:', error);
-    }
-}
-
 // 设置导航的函数
 function setupNavigation() {
     document.querySelector('nav').addEventListener('click', function(e) {
@@ -148,7 +124,4 @@ window.onload = function() {
     AOS.init({
         duration: 1500
     });
-
-    fetchServerStatus();
-    fetchHomeServerStatus();
 }
