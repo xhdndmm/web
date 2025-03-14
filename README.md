@@ -18,7 +18,7 @@ pip install psutil
 ```
 git clone https://github.com/xhdndmm/web.git
 ```
-然后修改nginx配置文件（替换括号部分，已添加速率限制）
+然后修改nginx配置文件（替换括号部分，已添加速率限制，此文件一般在/etc/nginx/nginx.conf）
 ```
 user www-data;
 worker_processes auto;
@@ -67,3 +67,4 @@ http {
 ```
 gunicorn --bind 0.0.0.0:5000 main:app --daemon
 ```
+你也可以自行配置systemd来实现开机自启

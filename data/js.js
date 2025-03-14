@@ -9,7 +9,7 @@ async function show_runtime() {
         console.log("Fetched data:", data);
 
         if (data.time_api) { 
-            const startDate = new Date("2024-06-28T12:32:00Z");
+            const startDate = new Date("2024-06-28T12:32:00Z"); //此处时间为UTC时间
             const ntpDate = new Date(data.time_api);
 
             const timeDiff = ntpDate - startDate;
