@@ -4,19 +4,19 @@
 */
 
 :root {
-    --bg-color: #f0f0f0;
+    --bg-color: rgba(200,200,200.9);
     --text-color: #222;
     --accent-color: #007bff;
-    --nav-bg: rgba(240,240,240,0.9);
+    --nav-bg: rgba(210,210,210,0.7);
     --nav-text: #222;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg-color: #121212;
+        --bg-color: rgba(55,55,55,0.9);
         --text-color: #e0e0e0;
         --accent-color: #66aaff;
-        --nav-bg: rgba(18,18,18,0.9);
+        --nav-bg: rgba(45,45,45,0.9);
         --nav-text: #e0e0e0;
     }
 }
@@ -51,7 +51,7 @@ body {
     z-index: 500; 
     color: white;
     text-align: center;
-    background: linear-gradient(90deg, rgba(30,30,30,0.5) 0%, rgba(60,60,60,0.5) 100%);
+    background: linear-gradient(90deg, rgba(30,30,30,0.5) 0%, rgba(225,225,225,0.5) 100%);
     border: 2px solid var(--accent-color);
 }
 
