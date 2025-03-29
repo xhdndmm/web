@@ -4,14 +4,13 @@
 // 显示运行时间的函数
 async function show_runtime() {
     try {
-        // 修改：使用 timeapi.io 的 API
-        const response = await fetch('https://timeapi.io/api/Time/current/zone?timeZone=Etc/UTC');
+        const response = await fetch('/time_api');
         const data = await response.json();
         console.log("Fetched data:", data);
 
-        if (data.dateTime) { 
-            const startDate = new Date("2024-06-28T12:32:00Z"); // 此处时间为UTC时间
-            const ntpDate = new Date(data.dateTime);
+        if (data.time_api) { 
+            const startDate = new Date("2024-06-28T12:32:00Z"); //此处时间为UTC时间
+            const ntpDate = new Date(data.time_api);
 
             const timeDiff = ntpDate - startDate;
             const msPerSecond = 1000;
