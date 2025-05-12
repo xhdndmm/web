@@ -18,9 +18,9 @@ pip install psutil
 ```
 git clone https://github.com/xhdndmm/web.git
 ```
-然后修改nginx配置文件（替换括号部分，已添加速率限制，此文件一般在/etc/nginx/nginx.conf）
+然后修改nginx配置文件（替换括号部分，已添加gzip和基础安全设置，此文件一般在/etc/nginx/nginx.conf）
 ```
-user www-data;
+user root;
 worker_processes auto;
 pid /run/nginx.pid;
 include /etc/nginx/modules-enabled/*.conf;
@@ -32,28 +32,60 @@ events {
 http {
     include /etc/nginx/mime.types;
     default_type application/octet-stream;
+    server_tokens off;  
+
+    gzip on;
+    gzip_vary on;
+    gzip_proxied any;
+    gzip_comp_level 6;
+    gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript text/html;
 
     limit_req_zone $binary_remote_addr zone=one:10m rate=5r/s;
 
     server {
         listen 80;
         listen [::]:80;
-        root （网站路径）;
+        server_name _;
+
+        return 403;
+    }
+
+    server {
+        listen 80;
+        listen [::]:80;
+        root /root/web/;
         index index.html;
 
-        server_name （网站域名）;
+        server_name （域名） ;
 
-        access_log （日志路径）;
-        error_log （日志路径）;
+        access_log （路径） combined buffer=16k;
+        error_log （路径） warn;
 
         location / {
             limit_req zone=one burst=3 nodelay;
-            try_files $uri $uri/ =404;
         }
 
         location /time_api {
             limit_req zone=one burst=3 nodelay;
             proxy_pass http://127.0.0.1:5000;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+
+        location /counter {
+            limit_req zone=one burst=3 nodelay;
+            proxy_pass http://127.0.0.1:5001;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+
+        location /counter/increment {
+            limit_req zone=one burst=3 nodelay;
+            proxy_pass http://127.0.0.1:5001;
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;

@@ -62,6 +62,27 @@ async function show_runtime() {
 
 show_runtime();
 
+// 获取计数器数据的函数
+async function updateCounter() {
+    try {
+        const response = await fetch('/counter');
+        const data = await response.json();
+        document.getElementById('counter_span').innerText = data.count;
+    } catch (error) {
+        console.error('无法获取计数器数据:', error);
+    }
+}
+
+// 增加计数器的函数
+async function incrementCounter() {
+    try {
+        await fetch('/counter/increment', { method: 'POST' });
+        updateCounter();
+    } catch (error) {
+        console.error('无法增加计数器:', error);
+    }
+}
+
 // 设置导航的函数
 function setupNavigation() {
     document.querySelector('nav').addEventListener('click', function(e) {
@@ -124,4 +145,7 @@ window.onload = function() {
     AOS.init({
         duration: 1500
     });
-}
+
+    updateCounter();
+    incrementCounter();
+};
