@@ -63,7 +63,7 @@ http {
 
         location /time_api {
             limit_req zone=one burst=3 nodelay;
-            proxy_pass http://127.0.0.1:5000;
+            proxy_pass http://127.0.0.1:5000/time_api;
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -72,7 +72,7 @@ http {
 
         location /counter {
             limit_req zone=one burst=3 nodelay;
-            proxy_pass http://127.0.0.1:5000;
+            proxy_pass http://127.0.0.1:5000/counter;
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -81,7 +81,16 @@ http {
 
         location /counter/increment {
             limit_req zone=one burst=3 nodelay;
-            proxy_pass http://127.0.0.1:5000;
+            proxy_pass http://127.0.0.1:5000/counter/increment;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+
+            location /server_status {
+            limit_req zone=one burst=3 nodelay;
+            proxy_pass http://127.0.0.1:5000/server_status;
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;

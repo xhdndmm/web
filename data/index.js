@@ -9,7 +9,7 @@ async function show_runtime() {
         console.log("Fetched data:", data);
 
         if (data.time_api) { 
-            const startDate = new Date("2024-06-28T12:32:00Z"); //此处时间为UTC时间
+            const startDate = new Date("2024-06-28T20:32:00Z"); //此处时间为CST时间
             const ntpDate = new Date(data.time_api);
 
             const timeDiff = ntpDate - startDate;
@@ -132,20 +132,30 @@ function navigateToSection(sectionId) {
     }
 }
 
-// 页面加载完成后的初始化函数
+// 服务器状态显示
+async function showServerStatus() {
+    try {
+        const response = await fetch('/server_status');
+        const data = await response.json();
+        document.getElementById('server_status_span').innerHTML =
+            `CPU使用率: ${data.cpu_percent}%<br>` +
+            `内存: ${(data.memory_used / 1024 / 1024).toFixed(1)}MB / ${(data.memory_total / 1024 / 1024).toFixed(1)}MB (${data.memory_percent}%)`;
+    } catch (error) {
+        document.getElementById('server_status_span').innerText = '无法获取服务器状态';
+    }
+}
+
+// 页面加载时定时刷新服务器状态
 window.onload = function() {
     setupNavigation();
     document.querySelector('.section').classList.add('active');
-    
     const center = document.querySelector('.center');
     setTimeout(() => {
         center.classList.add('loaded');
     }, 100);
-
-    AOS.init({
-        duration: 1500
-    });
-
+    AOS.init({ duration: 1500 });
     updateCounter();
     incrementCounter();
+    showServerStatus();
+    setInterval(showServerStatus, 10000);
 };
