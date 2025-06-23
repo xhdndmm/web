@@ -3,8 +3,7 @@
 # python3.X
 
 from flask import Flask, jsonify, request
-from ntplib import NTPClient
-from datetime import datetime, timezone
+from datetime import datetime
 import json
 import os
 
@@ -35,12 +34,10 @@ def increment_counter():
     return jsonify(counter)
 
 @app.route('/time_api', methods=['GET'])
-def get_ntp_time():
+def get_local_time():
     try:
-        client = NTPClient()
-        response = client.request('time.windows.com')
-        ntp_time = datetime.fromtimestamp(response.tx_time, tz=timezone.utc)
-        return jsonify({"time_api": ntp_time.isoformat()})
+        local_time = datetime.now().astimezone()
+        return jsonify({"time_api": local_time.isoformat()})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
