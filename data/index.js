@@ -138,7 +138,7 @@ async function showServerStatus() {
         const response = await fetch('/server_status');
         const data = await response.json();
         document.getElementById('server_status_span').innerHTML =
-            `CPU使用率: ${data.cpu_percent}%<br>` +
+            `CPU使用率: ${data.cpu_percent}%` +
             `内存: ${(data.memory_used / 1024 / 1024).toFixed(1)}MB / ${(data.memory_total / 1024 / 1024).toFixed(1)}MB (${data.memory_percent}%)`;
     } catch (error) {
         document.getElementById('server_status_span').innerText = '无法获取服务器状态';
