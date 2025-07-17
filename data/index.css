@@ -3,23 +3,37 @@
 [https://xhdndmm.cn/]
 */
 
-/* 定义全局CSS变量，用于主题颜色 */
+/* 全局变量 */
 :root {
-    --bg-color: rgba(200,200,200.9); /* 背景颜色 */
-    --text-color: #222; /* 文本颜色 */
-    --accent-color: #007bff; /* 强调颜色 */
-    --nav-bg: rgba(210,210,210,0.7); /* 导航背景颜色 */
-    --nav-text: #222; /* 导航文本颜色 */
+    --bg-color: #0f1020;
+    --bg-gradient: linear-gradient(135deg, #0f1020 0%, #1a1b2f 100%);
+    --text-color: #e0e0e0;
+    --accent-color: #00fff7;
+    --accent-color2: #ff00ea;
+    --accent-color3: #fffb00;
+    --nav-bg: rgba(20, 20, 40, 0.85);
+    --nav-text: #00fff7;
+    --card-bg: rgba(30, 30, 60, 0.85);
+    --border-glow: 0 0 12px 2px var(--accent-color2), 0 0 24px 4px var(--accent-color);
+    --shadow-glow: 0 0 24px 4px var(--accent-color2);
+    --font-family: 'Orbitron', 'Noto Sans SC', 'Segoe UI', Arial, sans-serif;
 }
 
 /* 深色模式下的CSS变量 */
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg-color: rgba(55,55,55,0.9);
+        --bg-color: #0f1020;
+        --bg-gradient: linear-gradient(135deg, #0f1020 0%, #1a1b2f 100%);
         --text-color: #e0e0e0;
-        --accent-color: #66aaff;
-        --nav-bg: rgba(45,45,45,0.9);
-        --nav-text: #e0e0e0;
+        --accent-color: #00fff7;
+        --accent-color2: #ff00ea;
+        --accent-color3: #fffb00;
+        --nav-bg: rgba(20, 20, 40, 0.85);
+        --nav-text: #00fff7;
+        --card-bg: rgba(30, 30, 60, 0.85);
+        --border-glow: 0 0 12px 2px var(--accent-color2), 0 0 24px 4px var(--accent-color);
+        --shadow-glow: 0 0 24px 4px var(--accent-color2);
+        --font-family: 'Orbitron', 'Noto Sans SC', 'Segoe UI', Arial, sans-serif;
     }
 }
 
@@ -30,39 +44,43 @@ html {
 
 body {
     text-align: center;
-    font-family: 'Noto Sans SC', sans-serif; /* 设置字体 */
+    font-family: var(--font-family);
     margin: 0;
     padding: 0;
     overflow-x: hidden;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    background: var(--bg-color); /* 使用全局背景颜色 */
-    color: var(--text-color); /* 使用全局文本颜色 */
+    background: var(--bg-gradient);
+    color: var(--text-color);
+    min-height: 100vh;
+    letter-spacing: 0.04em;
 }
 
 /* 居中容器样式 */
 .center {
     max-width: 1200px;
     margin: 80px auto 20px;
-    padding: 20px;
-    background-color: rgba(30, 30, 30, 0.5); /* 半透明背景 */
-    box-shadow: 0 4px 8px rgba(200, 200, 200, 0.1); /* 阴影效果 */
-    border-radius: 10px; /* 圆角 */
+    padding: 32px 24px 24px 24px;
+    background: var(--card-bg);
+    box-shadow: var(--shadow-glow);
+    border-radius: 18px; /* 圆角 */
     opacity: 0; /* 初始透明度 */
     transform: translateY(20px); /* 初始位置 */
-    transition: opacity 1s ease, transform 1s ease; /* 动画过渡 */
+    transition: opacity 1s cubic-bezier(.77,0,.18,1), transform 1s cubic-bezier(.77,0,.18,1); /* 动画过渡 */
     position: relative;
     z-index: 500; 
-    color: white;
+    color: var(--text-color);
     text-align: center;
-    background: linear-gradient(90deg, rgba(30,30,30,0.5) 0%, rgba(225,225,225,0.5) 100%);
-    border: 2px solid var(--accent-color); /* 边框颜色 */
+    border: 2.5px solid var(--accent-color2);
+    box-shadow: 0 0 24px 4px var(--accent-color2), 0 0 48px 8px var(--accent-color);
+    backdrop-filter: blur(6px) saturate(1.2);
 }
 
 /* 加载完成后的样式 */
 .center.loaded {
     opacity: 1;
     transform: translateY(0);
+    box-shadow: 0 0 32px 8px var(--accent-color), 0 0 64px 16px var(--accent-color2);
 }
 
 /* 区块样式 */
