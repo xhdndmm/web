@@ -14,19 +14,60 @@
     <script src="./data/index.js"></script>
     <link href="./data/aos.css" rel="stylesheet">
     <script src="./data/aos.js"></script>
+    <script src="./data/particles.min.js"></script>
     <meta name="keywords" content="喜欢电脑的猫咪,xhdndmm,素材库,MC服务器,miaobox,工具箱,聊天室,mc-server,chat,chatroom,cat-message,minecraft-server,toolbox,downloader,resources,SF-LINUX,cat-message,资源站">
     <meta name="description" content="喜欢电脑的猫咪的网站 一位科技爱好者的个人主页 提供了素材库 MC服务器 miaobox下载器 工具箱 聊天室 等项目">  
     <meta name="baidu-site-verification" content="codeva-rBOnHMAfYU" />  
 </head>
 
 <body>
+    <!-- 粒子背景层 -->
+    <div id="particles-js"></div>
+
+    <style>
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+            background: transparent;
+            padding-top: 60px;
+      }
+        body > *:not(#particles-js) {
+            position: relative;
+            z-index: 1;
+      }
+        nav.navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;           
+            background: #101323;
+            padding: 12px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: flex-start;
+            align-items: center;
+            box-sizing: border-box;
+            word-break: break-all;
+        }
+    </style>
+
     <!--nav栏-->
     <nav data-aos="fade-down" class="navbar">
-        <a href="#home">首页</a> |
-        <a href="#contact">联系方式</a> |
-        <a href="#resources">素材库</a> |
+        <a href="#home">首页</a>
+        <a href="#contact">联系方式</a>
+        <a href="#resources">素材库</a>
         <div class="dropdown">
-            <a href="#projects">项目</a> |
+            <a href="#projects">项目</a>
             <div class="dropdown-content">
                 <a href="#projects-chatroom">聊天室</a>
                 <a href="#projects-cat-message">cat-message</a>
@@ -37,7 +78,7 @@
                 <a href="#projects-toolbox">工具箱</a>
             </div>
         </div>
-        <a href="#about-me">关于我</a> |
+        <a href="#about-me">关于我</a>
         <a href="#about-web">关于网站</a>
     </nav>
 
@@ -66,6 +107,9 @@
             </p>
         </div>
 
+        <!-- 分隔符 -->
+        <div class="cyberpunk-divider"></div>
+
         <!--联系方式-->
         <div id="contact" class="section" data-aos="fade-up" data-section="contact">
             <h2>联系方式</h2>
@@ -84,6 +128,9 @@
             <a href="./data/business-card-2.png"><img src="./data/business-card-2.png" width="400" height="250" class="shake" loading="lazy" alt="名片"/></a>
         </div>
 
+        <!-- 分隔符 -->
+        <div class="cyberpunk-divider"></div>
+
         <!--素材库-->
         <div id="resources" class="section" data-aos="fade-up" data-section="resources">
             <h2>素材库</h2>
@@ -91,6 +138,9 @@
             <p>内容完全免费下载 免费查看 你可以随便使用</p>
             <a href="https://1drv.ms/f/c/2c94bd79245bebe6/EubrWyR5vZQggCyRBAAAAAAB2Jt41OuDG_T-PV-55MeBhA?e=YlciS7">OneDrive链接</a>
         </div>
+
+        <!-- 分隔符 -->
+        <div class="cyberpunk-divider"></div>
 
         <!--项目-->
         <div id="projects" class="section" data-aos="fade-up" data-section="projects">
@@ -104,6 +154,9 @@
             <a href="#projects-toolbox">工具箱</a>
         </div>
 
+        <!-- 分隔符 -->
+        <div class="cyberpunk-divider"></div>
+
         <!--项目-聊天室-->
         <div id="projects-chatroom" class="section" data-aos="fade-up" data-section="projects-chatroom">
             <h2>聊天室</h2>
@@ -112,12 +165,18 @@
             <a href="https://github.com/cat-cat-studio/chat"><img src="https://github-readme-stats.vercel.app/api/pin/?username=cat-cat-studio&repo=chat"loading="lazy" alt="github仓库"/></a>
         </div>
 
+        <!-- 分隔符 -->
+        <div class="cyberpunk-divider"></div>
+
         <!--项目-cat-message-->
         <div id="projects-cat-message" class="section" data-aos="fade-up" data-section="projects-cat-message">
             <h2>cat-message</h2>
             <p>一个简单好用的通讯软件 | <a href="https://docs.cat-message.xhdndmm.cn/">使用文档</a></p>
             <a href="https://github.com/cat-cat-studio/cat-message"><img src="https://github-readme-stats.vercel.app/api/pin/?username=cat-cat-studio&repo=cat-message"loading="lazy" alt="github仓库"/></a>
         </div>
+
+        <!-- 分隔符 -->
+        <div class="cyberpunk-divider"></div>
 
         <!--项目-MC服务器-->
         <div id="projects-mc-server" class="section" data-aos="fade-up" data-section="projects-mc-server">
@@ -127,12 +186,18 @@
             <p>服务器地址server.xhdndmm.cn 端口25565</p>
         </div>
         
+        <!-- 分隔符 -->
+        <div class="cyberpunk-divider"></div>
+
         <!--项目-mixobox-->
         <div id="projects-miaobox" class="section" data-aos="fade-up" data-section="projects-miaobox">
             <h2>miaobox下载器</h2>
             <p>一个功能强大的下载器 可以爬取视频 多线程下载</p>
             <a href="https://github.com/cat-cat-studio/miaobox"><img src="https://github-readme-stats.vercel.app/api/pin/?username=cat-cat-studio&repo=miaobox"loading="lazy" alt="github仓库"/></a>
         </div>
+
+        <!-- 分隔符 -->
+        <div class="cyberpunk-divider"></div>
 
         <!--项目-SF-LINUX-->
         <div id="projects-sf-linux" class="section" data-aos="fade-up" data-section="projects-sf-linux">
@@ -142,12 +207,18 @@
             <p>更新到1.0版本啦 修复了很多问题 快来试试把↑</p>
         </div>
 
+        <!-- 分隔符 -->
+        <div class="cyberpunk-divider"></div>
+
         <!--项目-工具箱-->
         <div id="projects-toolbox" class="section" data-aos="fade-up" data-section="projects-toolbox">
             <h2>猫咪工具箱</h2>
             <p>包含常用工具（如CPUZ）</p>
             <a href="https://1drv.ms/u/c/2c94bd79245bebe6/EebrWyR5vZQggCw5BgAAAAABHLCyUQ-jxhHRxIozvngSrw?e=nQKpk3">OneDrive链接</a>
         </div>
+
+        <!-- 分隔符 -->
+        <div class="cyberpunk-divider"></div>
 
         <!--项目-wifitnt-->
         <div id="projects-wifitnt" class="section" data-aos="fade-up" data-section="projects-wifitnt">
@@ -156,11 +227,8 @@
             <a href="https://github.com/xhdndmm/wifitnt"><img src="https://github-readme-stats.vercel.app/api/pin/?username=xhdndmm&repo=wifitnt"loading="lazy" alt="github仓库"/></a>
         </div>
 
-        <!--日常-->
-        <div id="log" class="section" data-aos="fade-up" data-section="log">
-            <h2>日常</h2>
-            <iframe src="./data/note.txt" width="100%" height="400px" style="border:none;" data-aos="fade-up"></iframe>
-        </div>
+        <!-- 分隔符 -->
+        <div class="cyberpunk-divider"></div>
 
         <!--关于我-->
         <div id="about-me" class="section" data-aos="fade-up" data-section="about-me">
@@ -190,6 +258,9 @@
             </p>
         </div>
 
+        <!-- 分隔符 -->
+        <div class="cyberpunk-divider"></div>
+
         <!--关于网站-->
         <div id="about-web" class="section" data-aos="fade-up" data-section="about-web">
             <p>
@@ -208,7 +279,7 @@
                 *重要 只有xhdndmm.cn这个域名是喜欢电脑的猫咪的官方域名 其他均不是 请注意辨别！*
                 <br>
                 <br>
-                最后更新时间：2025.7.17 17:40 CST | 更新内容：修改了主题
+                最后更新时间：2025.7.18 6:48 CST | 更新内容：全新升级！主题换新 升级了动画
                 <br>
                 <br>
                 Copyright © 2022-现在 喜欢电脑的猫咪 xhdndmm.cn

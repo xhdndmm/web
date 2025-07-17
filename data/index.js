@@ -121,14 +121,11 @@ function setupNavigation() {
     });
 }
 
-// 导航到指定部分的函数
+// 修复导航到指定部分的逻辑
 function navigateToSection(sectionId) {
-    document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
-    var target = document.querySelector(`[data-section="${sectionId}"]`);
+    const target = document.querySelector(`[data-section="${sectionId}"]`);
     if (target) {
-        setTimeout(() => {
-            target.classList.add('active');
-        }, 100); 
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 }
 
@@ -159,3 +156,64 @@ window.onload = function() {
     showServerStatus();
     setInterval(showServerStatus, 10000);
 };
+
+document.addEventListener('DOMContentLoaded', function() {
+    // 初始化粒子背景
+    particlesJS('particles-js', {
+        particles: {
+            number: { value: 80, density: { enable: true, value_area: 800 } },
+            color: { value: "#00e0ff" },
+            shape: { type: "circle" },
+            opacity: { value: 0.5, random: true },
+            size: { value: 3, random: true },
+            line_linked: {
+                enable: true,
+                distance: 150,
+                color: "#00e0ff",
+                opacity: 0.2,
+                width: 1
+            },
+            move: {
+                enable: true,
+                speed: 2,
+                direction: "none",
+                random: true,
+                straight: false,
+                out_mode: "out",
+                bounce: false
+            }
+        },
+        interactivity: {
+            detect_on: "canvas",
+            events: {
+                onhover: { enable: true, mode: "repulse" },
+                onclick: { enable: true, mode: "push" },
+                resize: true
+            }
+        }
+    });
+
+    // 隐藏加载动画并显示主内容
+    setTimeout(() => {
+        document.querySelector('.loader').style.opacity = '0';
+        document.querySelector('.loader').style.visibility = 'hidden';
+        document.getElementById('main-container').classList.add('loaded');
+    }, 2000);
+
+    // 更新子菜单显示逻辑
+    function setupDropdowns() {
+        document.querySelectorAll('.dropdown').forEach(dropdown => {
+            dropdown.addEventListener('mouseenter', () => {
+                console.log('Mouse entered:', dropdown);
+                dropdown.classList.add('show');
+            });
+            dropdown.addEventListener('mouseleave', () => {
+                console.log('Mouse left:', dropdown);
+                dropdown.classList.remove('show');
+            });
+        });
+    }
+
+    // 调用 setupDropdowns 初始化子菜单逻辑
+    setupDropdowns();
+});
