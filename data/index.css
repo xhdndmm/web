@@ -38,6 +38,26 @@ body {
     background: linear-gradient(135deg, #0a0c1a 0%, #161b2d 100%);
     letter-spacing: 0.04em;
     line-height: 1.6;
+    text-align: center; /* 水平居中 */
+}
+
+/* 导航栏文字居中 */
+.navbar {
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+}
+
+.navbar a {
+    text-align: center; /* 文字居中 */
+}
+
+/* 修复子菜单被遮挡问题 */
+.dropdown {
+    position: relative; /* 确保子菜单正确定位 */
+}
+
+.dropdown-content {
+    z-index: 1050; /* 提高子菜单的层级 */
 }
 
 /* 加载动画 */
@@ -206,6 +226,7 @@ h2::after {
     transition: all 0.3s ease;
     position: relative;
     z-index: 1;
+    text-align: center; /* 文字居中 */
 }
 
 .navbar a::before {
