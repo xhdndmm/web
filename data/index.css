@@ -16,6 +16,7 @@
     --shadow-glow: 0 0 30px 8px rgba(0, 224, 255, 0.4);
 }
 
+/* 全局样式 */
 * {
     margin: 0;
     padding: 0;
@@ -31,33 +32,79 @@ body {
     min-height: 100vh;
     font-family: var(--font-body);
     color: var(--text-color);
-    background: var(--bg-color);
+    background: linear-gradient(135deg, #0a0c1a 0%, #161b2d 100%);
     overflow-x: hidden;
     position: relative;
     padding-top: 80px;
-    background: linear-gradient(135deg, #0a0c1a 0%, #161b2d 100%);
     letter-spacing: 0.04em;
     line-height: 1.6;
-    text-align: center; /* 水平居中 */
+    text-align: center;
 }
 
-/* 导航栏文字居中 */
-.navbar {
-    justify-content: center; /* 水平居中 */
-    align-items: center; /* 垂直居中 */
+/* 导航栏及其文字居中，合并重复 */
+.navbar,
+nav.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: #101323;
+    padding: 12px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    word-break: break-all;
 }
 
 .navbar a {
-    text-align: center; /* 文字居中 */
+    color: var(--text-color);
+    text-decoration: none;
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: 1.1rem;
+    padding: 8px 20px;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.navbar a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--primary-accent), var(--secondary-accent));
+    border-radius: 30px;
+    z-index: -1;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.navbar a:hover {
+    color: #0a0c1a;
+    transform: translateY(-3px);
+}
+
+.navbar a:hover::before {
+    opacity: 1;
+    transform: scale(1);
 }
 
 /* 修复子菜单被遮挡问题 */
 .dropdown {
     position: relative; /* 确保子菜单正确定位 */
-}
-
-.dropdown-content {
-    z-index: 1050; /* 提高子菜单的层级 */
 }
 
 /* 加载动画 */
@@ -191,69 +238,6 @@ h2::after {
     border-radius: 2px;
 }
 
-/* 导航栏 */
-.navbar {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--glass-bg);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 50px;
-    padding: 12px 25px;
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    z-index: 1000;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.4s ease;
-}
-
-.navbar:hover {
-    box-shadow: 0 5px 30px rgba(0, 224, 255, 0.4), 0 10px 40px rgba(255, 0, 234, 0.2);
-}
-
-.navbar a {
-    color: var(--text-color);
-    text-decoration: none;
-    font-family: var(--font-heading);
-    font-weight: 500;
-    font-size: 1.1rem;
-    padding: 8px 20px;
-    border-radius: 30px;
-    transition: all 0.3s ease;
-    position: relative;
-    z-index: 1;
-    text-align: center; /* 文字居中 */
-}
-
-.navbar a::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, var(--primary-accent), var(--secondary-accent));
-    border-radius: 30px;
-    z-index: -1;
-    opacity: 0;
-    transform: scale(0.9);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.navbar a:hover {
-    color: #0a0c1a;
-    transform: translateY(-3px);
-}
-
-.navbar a:hover::before {
-    opacity: 1;
-    transform: scale(1);
-}
-
 /* 下拉菜单 */
 .dropdown {
     position: relative;
@@ -264,28 +248,22 @@ h2::after {
     display: none;
     position: absolute;
     top: 100%;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     background: var(--glass-bg);
     backdrop-filter: blur(10px);
     min-width: 200px;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    z-index: 1001;
+    z-index: 1100;
     padding: 10px;
     margin-top: 10px;
     opacity: 0;
-    transform: translateY(10px);
     transition: all 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.dropdown:hover .dropdown-content {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* 新增：通过类名控制子菜单显示 */
+.dropdown:hover .dropdown-content,
 .dropdown.show .dropdown-content {
     display: block;
     opacity: 1;
@@ -842,71 +820,78 @@ a:hover::after {
 
 /* 响应式设计 */
 @media (max-width: 992px) {
-    .navbar {
+    .navbar,
+    nav.navbar {
         width: 90%;
         top: 15px;
         padding: 10px 15px;
         gap: 10px;
     }
-    
     .navbar a {
         font-size: 0.9rem;
         padding: 6px 15px;
     }
-    
     .glass-container {
         padding: 20px;
         margin: 15px;
     }
-    
     h1 {
         font-size: 2.2rem;
     }
-    
     h2 {
         font-size: 1.8rem;
     }
 }
 
 @media (max-width: 768px) {
-    .navbar {
+    .navbar,
+    nav.navbar {
         flex-wrap: wrap;
         padding: 10px;
         border-radius: 20px;
         gap: 8px;
         width: 95%;
     }
-    
     .navbar a {
         font-size: 0.85rem;
         padding: 5px 12px;
     }
-    
     .dropdown-content {
         position: static;
         margin-top: 5px;
         min-width: 100%;
     }
-    
     .glass-container {
         padding: 15px;
     }
-    
     h1 {
         font-size: 1.8rem;
     }
-    
     h2 {
         font-size: 1.5rem;
     }
-    
     .card-wrapper {
         width: 100%;
         max-width: 300px;
     }
-    
     .business-cards {
         flex-direction: column;
         align-items: center;
     }
+}
+
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  background: transparent;
+}
+
+body > *:not(#particles-js) {
+    position: relative;
+    z-index: 1;
 }

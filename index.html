@@ -24,43 +24,6 @@
     <!-- 粒子背景层 -->
     <div id="particles-js"></div>
 
-    <style>
-        #particles-js {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 0;
-            pointer-events: none;
-            background: transparent;
-            padding-top: 60px;
-      }
-        body > *:not(#particles-js) {
-            position: relative;
-            z-index: 1;
-      }
-        nav.navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;           
-            background: #101323;
-            padding: 12px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            justify-content: flex-start;
-            align-items: center;
-            box-sizing: border-box;
-            word-break: break-all;
-        }
-    </style>
-
     <!--nav栏-->
     <nav data-aos="fade-down" class="navbar">
         <a href="#home">首页</a>
@@ -134,7 +97,7 @@
         <!--素材库-->
         <div id="resources" class="section" data-aos="fade-up" data-section="resources">
             <h2>素材库</h2>
-            <p>猫咪闲的没事拍的东西</p>
+            <p>这里是我拍的照片</p>
             <p>内容完全免费下载 免费查看 你可以随便使用</p>
             <a href="https://1drv.ms/f/c/2c94bd79245bebe6/EubrWyR5vZQggCyRBAAAAAAB2Jt41OuDG_T-PV-55MeBhA?e=YlciS7">OneDrive链接</a>
         </div>
@@ -145,6 +108,7 @@
         <!--项目-->
         <div id="projects" class="section" data-aos="fade-up" data-section="projects">
             <h2>项目</h2>
+            <br>
             <a href="#projects-chatroom">聊天室</a>|
             <a href="#projects-cat-message">cat-message</a>|
             <a href="#projects-mc-server">MC服务器</a>|
@@ -161,7 +125,7 @@
         <div id="projects-chatroom" class="section" data-aos="fade-up" data-section="projects-chatroom">
             <h2>聊天室</h2>
             <p>*极力推荐*</p>
-            <p>一个非常好用的聊天室项目 可以直接用docker部署</p>
+            <p>一个非常好用的聊天室项目 可以直接用docker部署 支持多种功能 详见↓</p>
             <a href="https://github.com/cat-cat-studio/chat"><img src="https://github-readme-stats.vercel.app/api/pin/?username=cat-cat-studio&repo=chat"loading="lazy" alt="github仓库"/></a>
         </div>
 
@@ -171,7 +135,7 @@
         <!--项目-cat-message-->
         <div id="projects-cat-message" class="section" data-aos="fade-up" data-section="projects-cat-message">
             <h2>cat-message</h2>
-            <p>一个简单好用的通讯软件 | <a href="https://docs.cat-message.xhdndmm.cn/">使用文档</a></p>
+            <p>一个简单好用的通讯软件</p>
             <a href="https://github.com/cat-cat-studio/cat-message"><img src="https://github-readme-stats.vercel.app/api/pin/?username=cat-cat-studio&repo=cat-message"loading="lazy" alt="github仓库"/></a>
         </div>
 
@@ -181,7 +145,7 @@
         <!--项目-MC服务器-->
         <div id="projects-mc-server" class="section" data-aos="fade-up" data-section="projects-mc-server">
             <h2>MC服务器</h2>
-            <p>自己搭建的MC游戏服务器（无需正版验证哦）</p>
+            <p>自己搭建的MC游戏服务器（需正版验证哦）</p>
             <p>推荐JAVA版1.21.1</p>
             <p>服务器地址server.xhdndmm.cn 端口25565</p>
         </div>
@@ -232,19 +196,13 @@
 
         <!--关于我-->
         <div id="about-me" class="section" data-aos="fade-up" data-section="about-me">
+            <h2>关于我</h2>
+            <br>
             <p>
-                一位普普通通的科技爱好者 没啥好说的
-                <!--预计这里会添加自我介绍-->
+                不知道介绍些什么
                 <br>
-                状态：繁忙……（上学）
+                技术栈：
                 <br>
-                生日：2011.4.9
-                <br>
-                性格：未知（自己也不知道）
-                <br>
-                爱好：科技、摄影、音乐、自行车、撸猫
-                <br>
-                技能：
                 <img src="https://skillicons.dev/icons?i=bash,blender,cloudflare,debian,git,github" loading="lazy" alt="技术栈"/>
                 <img src="https://skillicons.dev/icons?i=linux,ps,pr,py,vscode,windows" loading="lazy" alt="技术栈"/>
                 <br>
@@ -263,6 +221,8 @@
 
         <!--关于网站-->
         <div id="about-web" class="section" data-aos="fade-up" data-section="about-web">
+            <h2>关于网站</h2>
+            <br>
             <p>
                 此网站由<a href="https://www.cloudflare.com/">CloudFlare</a>和<a href="https://www.rainyun.com/">雨云</a>驱动
                 <br>
@@ -279,7 +239,7 @@
                 *重要 只有xhdndmm.cn这个域名是喜欢电脑的猫咪的官方域名 其他均不是 请注意辨别！*
                 <br>
                 <br>
-                最后更新时间：2025.7.19 10:16 CST | 更新内容：将文字居中 但NAV栏目前存在子菜单被遮挡以及文字不居中的问题
+                最后更新时间：2025.7.27 8:03 CST | 更新内容：修复了一些细节问题
                 <br>
                 <br>
                 Copyright © 2022-现在 喜欢电脑的猫咪 xhdndmm.cn
