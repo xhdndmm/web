@@ -1,2 +1,4 @@
 User-agent: *
+Disallow: 
+Sitemap: https://xhdndmm.cn/sitemap.xml
 Disallow: /data/
