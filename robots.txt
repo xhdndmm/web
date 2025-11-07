@@ -2,3 +2,7 @@ User-agent: *
 Disallow: 
 Sitemap: https://xhdndmm.cn/sitemap.xml
 Disallow: /data/
+Disallow: /.git/
+Disallow: /counter/
+Disallow: /time_api/
+Disallow: /server_status
