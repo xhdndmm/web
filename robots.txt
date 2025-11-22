@@ -1,6 +1,6 @@
 User-agent: *
 Disallow: 
-Sitemap: https://xhdndmm.cn/sitemap.xml
+Sitemap: https://xhdndmm.net/sitemap.xml
 Disallow: /data/
 Disallow: /.git/
 Disallow: /counter/

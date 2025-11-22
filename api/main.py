@@ -1,6 +1,6 @@
 # python3.X
 # [https://github.com/xhdndmm/web]
-# [https://xhdndmm.cn/]
+# [https://xhdndmm.net/]
 
 from flask import Flask, jsonify, request
 from datetime import datetime

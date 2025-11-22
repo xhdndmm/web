@@ -1,5 +1,5 @@
 //[https://github.com/xhdndmm/web]
-//[https://xhdndmm.cn/]
+//[https://xhdndmm.net/]
 
 // 显示运行时间的函数
 async function show_runtime() {
