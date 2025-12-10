@@ -1,20 +1,20 @@
-# 这里是xhdndmm.net的源代码 以下内容为介绍部分
+# 本仓库是 `https://xhdndmm.net/` 的源代码
 ## 声明
-**如果你想使用本仓库代码作为你的个人主页 请删去内容后再使用 谢谢 本站使用MIT许可证**
+**如果你想使用本仓库代码作为你的个人主页 请删去本仓库中所有无关内容后再使用 谢谢 本站使用MIT许可证 请遵守**
 ## 网站部署方法
-**注：以debian系linux系统为例**
-### 部署
+- 注：以debian系linux系统为例
 首先克隆存储库
 ```
 git clone https://github.com/xhdndmm/web.git
 ```
 然后安装依赖
 ```
+cd /path/to/web
 sudo apt update
 sudo apt install python3-pip gunicorn nginx
 pip install -r requirements.txt
 ```
-然后修改nginx配置文件（替换括号部分，已添加gzip和基础安全设置，此文件一般在/etc/nginx/nginx.conf）
+然后修改nginx配置文件（模板已添加gzip和基础安全设置 可根据需要修改 此文件一般在`/etc/nginx/nginx.conf`）
 ```
 user root;
 worker_processes auto;
@@ -49,13 +49,13 @@ http {
     server {
         listen 80;
         listen [::]:80;
-        root （路径）;
+        root /path/to/web ;
         index index.html;
 
-        server_name （域名） ;
+        server_name example.com ;
 
-        access_log （路径） combined buffer=16k;
-        error_log （路径） warn;
+        access_log /path/to/log combined buffer=16k;
+        error_log /path/to/log warn;
 
         location / {
             limit_req zone=one burst=3 nodelay;
@@ -100,8 +100,8 @@ http {
 }
 
 ```
-进入网站根目录并运行以下命令
-```
+进入网站根目录并运行以下命令以开启后端
+```shell
 sh start.sh
 ```
-你也可以自行配置systemd来实现开机自启
+你也可以自行配置systemd等来实现开机自启
