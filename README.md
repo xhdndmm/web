@@ -1,7 +1,35 @@
-# 本仓库是 `https://xhdndmm.net/` 的源代码
-## 声明
-**如果你想使用本仓库代码作为你的个人主页 请删去本仓库中所有无关内容后再使用 谢谢 本站使用MIT许可证 请遵守**
-## 网站部署方法
+# 本仓库是 [https://xhdndmm.net/]() 的源代码
+
+## 项目结构
+```
+.
+├── api
+│   └── main.py
+├── data
+│   ├── aos.css
+│   ├── aos.js
+│   ├── autoload.js
+│   ├── index.css
+│   ├── index.js
+│   ├── logo.jpg
+│   └── particles.min.js
+├── favicon.ico
+├── index.html
+├── LICENSE
+├── LICENSE-CODE
+├── README.md
+├── requirements.txt
+├── robots.txt
+├── sitemap.xml
+└── start.sh
+
+3 directories, 17 files
+```
+- `aos.js`、`aos.css`来自[https://github.com/michalsnik/aos]()
+- `autoload.js`来自[https://github.com/stevenjoezhang/live2d-widget]()
+- `particles.min.js`来自[https://github.com/VincentGarreau/particles.js]()
+
+## 部署方法
 - 注：以debian系linux系统为例
 首先克隆存储库
 ```
@@ -14,7 +42,7 @@ sudo apt update
 sudo apt install python3-pip gunicorn nginx
 pip install -r requirements.txt
 ```
-然后修改nginx配置文件（模板已添加gzip和基础安全设置 可根据需要修改 此文件一般在`/etc/nginx/nginx.conf`）
+然后修改nginx配置文件（模板已添加gzip和基础安全设置，可根据需要修改，此文件一般在`/etc/nginx/nginx.conf`）
 ```
 user root;
 worker_processes auto;
@@ -105,3 +133,24 @@ http {
 sh start.sh
 ```
 你也可以自行配置systemd等来实现开机自启
+
+## 协议
+### 内容许可
+本仓库中的**内容部分**（包括但不限于）：
+
+- `index.html` 中的 `meta`、`title`、`a`、`h1`、`h2`、`p` 标签内的文本内容  
+- `logo.png`
+- `favicon.ico`
+- `sitemap.xml`
+
+均采用 [CC BY 4.0](./LICENSE) 协议进行许可。  
+使用上述内容时，需遵守 CC BY 4.0 的署名、标明修改及附带许可证链接等要求。
+
+### 代码许可
+除上述内容外，本仓库中的**其余所有文件**均采用  
+[MIT](./LICENSE-CODE) 协议进行许可。
+
+### 使用说明
+如果你希望将本仓库的代码用于你自己的个人主页，  
+请在使用前**删除所有受 CC BY 4.0 许可的内容文件或内容部分**，  
+并自行替换为你的原创内容。
