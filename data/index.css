@@ -1,20 +1,53 @@
 /*
 [https://github.com/xhdndmm/web]
 [https://xhdndmm.net/]
+------
+使用了[https://catppuccin.com/palette/]的配色
 */
 
-/* 基础重置与变量 */
+/* --- Catppuccin Mocha 调色板变量 --- */
 :root {
-    --primary: #8a2be2; /* 科技紫 */
-    --secondary: #00ffff; /* 霓虹青 */
-    --accent: #ff6ec7; /* 猫咪粉 */
-    --dark: #0a0a1f; /* 深蓝背景 */
-    --darker: #050510;
-    --light: #f0f8ff;
-    --transition: all 0.3s ease;
-    --glow: 0 0 10px var(--secondary), 0 0 20px var(--secondary);
+    /* 核心色彩 */
+    --rosewater: #f5e0dc;
+    --flamingo: #f2cdcd;
+    --pink: #f5c2e7;
+    --mauve: #cba6f7;
+    --red: #f38ba8;
+    --maroon: #eba0ac;
+    --peach: #fab387;
+    --yellow: #f9e2af;
+    --green: #a6e3a1;
+    --teal: #94e2d5;
+    --sky: #89dceb;
+    --sapphire: #74c7ec;
+    --blue: #89b4fa;
+    --lavender: #b4befe;
+
+    /* 背景与表面层级 */
+    --text: #cdd6f4;
+    --subtext1: #bac2de;
+    --subtext0: #a6adc8;
+    --overlay2: #9399b2;
+    --surface2: #585b70;
+    --surface1: #45475a;
+    --surface0: #313244;
+    --base: #1e1e2e;
+    --mantle: #181825;
+    --crust: #11111b;
+
+    /* 语义化变量映射 */
+    --primary: var(--mauve);     /* 科技紫 -> 锦葵紫 */
+    --secondary: var(--sapphire); /* 霓虹青 -> 蓝宝石 */
+    --accent: var(--pink);       /* 猫咪粉 -> 粉色 */
+    --dark: var(--base);
+    --darker: var(--crust);
+    --light: var(--text);
+    
+    --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    --glow: 0 0 15px rgba(203, 166, 247, 0.3);
 }
 
+/* --- 基础重置 --- */
 * {
     margin: 0;
     padding: 0;
@@ -22,16 +55,17 @@
 }
 
 body {
-    font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
-    background: linear-gradient(135deg, var(--darker), var(--dark));
-    color: var(--light);
+    font-family: 'Inter', 'Segoe UI', 'Microsoft YaHei', sans-serif;
+    background: var(--darker);
+    background-image: radial-gradient(circle at top right, var(--mantle), var(--darker));
+    color: var(--text);
     line-height: 1.6;
     overflow-x: hidden;
     position: relative;
     min-height: 100vh;
 }
 
-/* 粒子背景样式 */
+/* --- 粒子背景 --- */
 #particles-js {
     position: fixed;
     width: 100%;
@@ -39,9 +73,10 @@ body {
     top: 0;
     left: 0;
     z-index: -1;
+    opacity: 0.5;
 }
 
-/* 导航栏样式 - 科技感设计 */
+/* --- 导航栏 --- */
 .navbar {
     position: fixed;
     top: 0;
@@ -49,108 +84,113 @@ body {
     display: flex;
     justify-content: center;
     padding: 1rem 0;
-    background: rgba(10, 10, 31, 0.8);
-    backdrop-filter: blur(10px);
+    background: rgba(24, 24, 37, 0.85); /* Mantle alpha */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     z-index: 1000;
-    border-bottom: 1px solid rgba(138, 43, 226, 0.3);
+    border-bottom: 1px solid var(--surface0);
 }
 
 .navbar a {
-    color: var(--light);
+    color: var(--subtext1);
     text-decoration: none;
     padding: 0.5rem 1.2rem;
     margin: 0 0.5rem;
     font-weight: 500;
     position: relative;
     transition: var(--transition);
-    border-radius: 4px;
+    border-radius: 8px;
 }
 
 .navbar a:hover {
-    color: var(--secondary);
-    background: rgba(0, 255, 255, 0.1);
+    color: var(--primary);
+    background: var(--surface0);
 }
 
 .navbar a::after {
     content: '';
     position: absolute;
-    bottom: -5px;
+    bottom: 4px;
     left: 50%;
     transform: translateX(-50%);
     width: 0;
     height: 2px;
-    background: var(--secondary);
+    background: var(--primary);
     transition: var(--transition);
+    border-radius: 2px;
 }
 
 .navbar a:hover::after {
-    width: 70%;
+    width: 60%;
 }
 
-.dropdown {
-    position: relative;
-}
-
+/* 下拉菜单 */
 .dropdown-content {
     display: none;
     position: absolute;
-    top: 100%;
+    top: 110%;
     left: 0;
-    background: rgba(20, 20, 40, 0.95);
-    min-width: 200px;
-    border-radius: 4px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    background: var(--mantle);
+    min-width: 180px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
     z-index: 1;
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--primary);
+    border: 1px solid var(--surface1);
+    overflow: hidden;
 }
 
 .dropdown-content a {
     display: block;
-    padding: 0.8rem 1rem;
+    padding: 0.8rem 1.2rem;
     margin: 0;
-    border-bottom: 1px solid rgba(138, 43, 226, 0.2);
+    border-bottom: 1px solid var(--surface0);
+    border-radius: 0;
+    font-size: 0.95rem;
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
 }
 
 .dropdown:hover .dropdown-content {
     display: block;
-    animation: fadeIn 0.3s ease;
+    animation: slideDown 0.3s ease;
 }
 
-@keyframes fadeIn {
+@keyframes slideDown {
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* 主内容区样式 */
+/* --- 主内容区 --- */
 .center {
-    max-width: 1200px;
-    margin: 80px auto 40px;
-    padding: 0 20px;
+    max-width: 1100px;
+    margin: 100px auto 40px;
+    padding: 0 24px;
 }
 
 .section {
-    background: rgba(15, 15, 35, 0.7);
-    border-radius: 12px;
-    padding: 2.5rem;
+    background: var(--base);
+    border-radius: 20px;
+    padding: 3rem;
     margin-bottom: 3rem;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(138, 43, 226, 0.3);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--surface0);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    transition: var(--transition);
 }
 
 .section:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(138, 43, 226, 0.3);
+    transform: translateY(-6px);
+    border-color: var(--surface2);
+    box-shadow: 0 15px 45px rgba(0,0,0,0.3);
 }
 
 h1, h2 {
-    color: var(--secondary);
-    margin-bottom: 1.5rem;
-    text-shadow: var(--glow);
+    color: var(--primary);
+    margin-bottom: 1.8rem;
     position: relative;
     display: inline-block;
+    letter-spacing: 0.5px;
 }
 
 h1::after, h2::after {
@@ -158,15 +198,16 @@ h1::after, h2::after {
     position: absolute;
     bottom: -10px;
     left: 0;
-    width: 60px;
-    height: 3px;
-    background: var(--accent);
-    border-radius: 2px;
+    width: 45px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    border-radius: 10px;
 }
 
 p {
-    margin-bottom: 1.2rem;
-    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+    color: var(--subtext1);
 }
 
 a {
@@ -177,199 +218,121 @@ a {
 
 a:hover {
     color: var(--accent);
-    text-shadow: var(--glow);
 }
 
-/* 猫咪元素装饰 */
-.cat-element {
-    position: absolute;
-    z-index: -1;
-    opacity: 0.1;
-    pointer-events: none;
-}
-
-.cat-paw {
-    width: 80px;
-    height: 80px;
-    background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
-    border-radius: 50%;
-}
-
-/* 分隔符样式 - 霓虹灯效果 */
-.cyberpunk-divider {
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--secondary), transparent);
-    margin: 2.5rem 0;
-    position: relative;
-}
-
-.cyberpunk-divider::before,
-.cyberpunk-divider::after {
-    content: '';
-    position: absolute;
-    top: -5px;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--secondary);
-    box-shadow: var(--glow);
-}
-
-.cyberpunk-divider::before {
-    left: 0;
-}
-
-.cyberpunk-divider::after {
-    right: 0;
-}
-
-/* 图片样式 */
-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    transition: var(--transition);
-    border: 1px solid rgba(138, 43, 226, 0.3);
-}
-
-img:hover {
-    transform: scale(1.03);
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-}
-
-.shake {
-    display: inline-block;
-}
-
-.shake:hover {
-    animation: shake 0.5s;
-}
-
-@keyframes shake {
-    0% { transform: translate(0, 0) rotate(0); }
-    25% { transform: translate(-5px, 5px) rotate(-5deg); }
-    50% { transform: translate(5px, -5px) rotate(5deg); }
-    75% { transform: translate(-5px, 5px) rotate(-5deg); }
-    100% { transform: translate(0, 0) rotate(0); }
-}
-
-/* 项目卡片样式 */
+/* --- 项目展示 --- */
 .project-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1.5rem;
-    margin-top: 1.5rem;
+    margin-top: 2rem;
 }
 
 .project-card {
-    background: rgba(25, 25, 45, 0.7);
-    border-radius: 10px;
-    padding: 1.5rem;
-    border: 1px solid rgba(138, 43, 226, 0.3);
+    background: var(--surface0);
+    border-radius: 15px;
+    padding: 1.8rem;
+    border: 1px solid transparent;
     transition: var(--transition);
 }
 
 .project-card:hover {
-    transform: translateY(-8px);
-    border-color: var(--secondary);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transform: scale(1.02);
+    border-color: var(--lavender);
+    background: var(--surface1);
 }
 
 .project-card h3 {
-    color: var(--accent);
-    margin-bottom: 0.8rem;
+    color: var(--peach);
+    margin-bottom: 1rem;
 }
 
-/* 响应式设计 */
-@media (max-width: 768px) {
-    .navbar {
-        flex-wrap: wrap;
-        padding: 0.5rem;
-    }
-    
-    .navbar a {
-        padding: 0.5rem;
-        font-size: 0.9rem;
-        margin: 0.2rem;
-    }
-    
-    .section {
-        padding: 1.5rem;
-    }
-    
-    .project-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    h1 {
-        font-size: 1.8rem;
-    }
-    
-    h2 {
-        font-size: 1.5rem;
-    }
+/* --- 装饰元素 --- */
+.cyberpunk-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--surface2), transparent);
+    margin: 3rem 0;
+    position: relative;
 }
 
-/* 页脚样式 */
-footer {
-    text-align: center;
-    padding: 1.5rem;
-    margin-top: 2rem;
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.7);
-    border-top: 1px solid rgba(138, 43, 226, 0.3);
-}
-
-/* 技术栈图标样式 */
-.tech-stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.8rem;
-    margin: 1rem 0;
-}
-
-.tech-stack img {
-    width: 40px;
-    height: 40px;
-    transition: var(--transition);
-}
-
-.tech-stack img:hover {
-    transform: scale(1.2);
-    filter: drop-shadow(0 0 5px var(--secondary));
-}
-
-/* 动态计数器样式 */
-.counter {
-    font-weight: bold;
-    color: var(--accent);
+.cyberpunk-divider::after {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--base);
+    padding: 0 10px;
     font-size: 1.2rem;
 }
 
-/* 服务器状态指示器 */
+.important-note {
+    background: rgba(245, 194, 231, 0.08);
+    border-left: 4px solid var(--accent);
+    padding: 1.2rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+    color: var(--rosewater);
+}
+
+/* --- 图片与交互 --- */
+img {
+    max-width: 100%;
+    border-radius: 12px;
+    transition: var(--transition);
+    border: 1px solid var(--surface1);
+}
+
+img:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.shake:hover {
+    animation: shake 0.6s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake {
+    10%, 90% { transform: translate3d(-1px, 0, 0); }
+    20%, 80% { transform: translate3d(2px, 0, 0); }
+    30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+    40%, 60% { transform: translate3d(4px, 0, 0); }
+}
+
+/* --- 状态指示器 --- */
 .status-indicator {
     display: inline-block;
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-    margin-right: 8px;
+    margin-right: 10px;
 }
 
-.status-online {
-    background-color: #00ff00;
-    box-shadow: 0 0 8px #00ff00;
+.status-online { background-color: var(--green); box-shadow: 0 0 8px var(--green); }
+.status-offline { background-color: var(--red); box-shadow: 0 0 8px var(--red); }
+
+/* --- 响应式调整 --- */
+@media (max-width: 768px) {
+    .center { margin-top: 80px; padding: 0 15px; }
+    .section { padding: 1.5rem; }
+    .navbar a { padding: 0.4rem 0.6rem; font-size: 0.85rem; }
 }
 
-.status-offline {
-    background-color: #ff0000;
-    box-shadow: 0 0 8px #ff0000;
+/* --- 页脚 --- */
+footer {
+    text-align: center;
+    padding: 3rem;
+    margin-top: 2rem;
+    background: var(--mantle);
+    color: var(--overlay2);
+    border-top: 1px solid var(--surface0);
 }
 
-/* 重要通知样式 */
-.important-note {
-    background: rgba(255, 110, 199, 0.15);
-    border-left: 4px solid var(--accent);
-    padding: 1rem;
-    border-radius: 4px;
-    margin: 1.5rem 0;
+/* --- 滚动条 --- */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--darker); }
+::-webkit-scrollbar-thumb { 
+    background: var(--surface1); 
+    border-radius: 5px; 
+    border: 2px solid var(--darker);
 }
+::-webkit-scrollbar-thumb:hover { background: var(--surface2); }
