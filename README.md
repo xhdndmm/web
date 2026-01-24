@@ -1,4 +1,4 @@
-# 本仓库是 [https://xhdndmm.net/]() 的源代码
+# 本仓库是`https://xhdndmm.net/`的源代码
 
 ## 项目结构
 ```
@@ -25,9 +25,6 @@
 
 3 directories, 17 files
 ```
-- `aos.js`、`aos.css`来自[https://github.com/michalsnik/aos]()
-- `autoload.js`来自[https://github.com/stevenjoezhang/live2d-widget]()
-- `particles.min.js`来自[https://github.com/VincentGarreau/particles.js]()
 
 ## 部署方法
 - 注：以debian系linux系统为例
@@ -135,7 +132,14 @@ sh start.sh
 你也可以自行配置systemd等来实现开机自启
 
 ## 协议
-### 内容许可
+### 引用的文件
+- `aos.js`、`aos.css`来自https://github.com/michalsnik/aos
+- `autoload.js`来自https://github.com/stevenjoezhang/live2d-widget
+- `particles.min.js`来自https://github.com/VincentGarreau/particles.js
+
+这些文件遵从原有协议，本仓库的使用仅用于加速网站访问以及更好的适配网站
+
+### 内容部分
 本仓库中的**内容部分**（包括但不限于）：
 
 - `index.html` 中的 `meta`、`title`、`a`、`h1`、`h2`、`p` 标签内的文本内容  
@@ -146,7 +150,7 @@ sh start.sh
 均采用 [CC BY 4.0](./LICENSE) 协议进行许可。  
 使用上述内容时，需遵守 CC BY 4.0 的署名、标明修改及附带许可证链接等要求。
 
-### 代码许可
+### 代码部分
 除上述内容外，本仓库中的**其余所有文件**均采用  
 [MIT](./LICENSE-CODE) 协议进行许可。
 
