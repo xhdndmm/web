@@ -5,29 +5,18 @@
 使用了[https://catppuccin.com/palette/]的配色
 */
 
-/* --- Catppuccin Mocha 调色板变量 --- */
+/* ========== Catppuccin Mocha 变量 ========== */
 :root {
-    /* 核心色彩 */
     --rosewater: #f5e0dc;
-    --flamingo: #f2cdcd;
     --pink: #f5c2e7;
     --mauve: #cba6f7;
     --red: #f38ba8;
-    --maroon: #eba0ac;
     --peach: #fab387;
-    --yellow: #f9e2af;
     --green: #a6e3a1;
-    --teal: #94e2d5;
-    --sky: #89dceb;
     --sapphire: #74c7ec;
-    --blue: #89b4fa;
-    --lavender: #b4befe;
 
-    /* 背景与表面层级 */
     --text: #cdd6f4;
     --subtext1: #bac2de;
-    --subtext0: #a6adc8;
-    --overlay2: #9399b2;
     --surface2: #585b70;
     --surface1: #45475a;
     --surface0: #313244;
@@ -35,19 +24,14 @@
     --mantle: #181825;
     --crust: #11111b;
 
-    /* 语义化变量映射 */
-    --primary: var(--mauve);     /* 科技紫 -> 锦葵紫 */
-    --secondary: var(--sapphire); /* 霓虹青 -> 蓝宝石 */
-    --accent: var(--pink);       /* 猫咪粉 -> 粉色 */
-    --dark: var(--base);
-    --darker: var(--crust);
-    --light: var(--text);
-    
+    --primary: var(--mauve);
+    --secondary: var(--sapphire);
+    --accent: var(--pink);
+
     --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    --glow: 0 0 15px rgba(203, 166, 247, 0.3);
 }
 
-/* --- 基础重置 --- */
+/* ========== 基础 ========== */
 * {
     margin: 0;
     padding: 0;
@@ -56,27 +40,22 @@
 
 body {
     font-family: 'Inter', 'Segoe UI', 'Microsoft YaHei', sans-serif;
-    background: var(--darker);
-    background-image: radial-gradient(circle at top right, var(--mantle), var(--darker));
+    background: radial-gradient(circle at top right, var(--mantle), var(--crust));
     color: var(--text);
     line-height: 1.6;
     overflow-x: hidden;
-    position: relative;
     min-height: 100vh;
 }
 
-/* --- 粒子背景 --- */
+/* 粒子背景 */
 #particles-js {
     position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
+    inset: 0;
     z-index: -1;
     opacity: 0.5;
 }
 
-/* --- 导航栏 --- */
+/* ========== 导航栏 ========== */
 .navbar {
     position: fixed;
     top: 0;
@@ -84,22 +63,19 @@ body {
     display: flex;
     justify-content: center;
     padding: 1rem 0;
-    background: rgba(24, 24, 37, 0.85); /* Mantle alpha */
+    background: rgba(24, 24, 37, 0.85);
     backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    z-index: 1000;
     border-bottom: 1px solid var(--surface0);
+    z-index: 1000;
 }
 
 .navbar a {
     color: var(--subtext1);
     text-decoration: none;
     padding: 0.5rem 1.2rem;
-    margin: 0 0.5rem;
-    font-weight: 500;
-    position: relative;
-    transition: var(--transition);
+    margin: 0 0.4rem;
     border-radius: 8px;
+    transition: var(--transition);
 }
 
 .navbar a:hover {
@@ -107,24 +83,9 @@ body {
     background: var(--surface0);
 }
 
-.navbar a::after {
-    content: '';
-    position: absolute;
-    bottom: 4px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 2px;
-    background: var(--primary);
-    transition: var(--transition);
-    border-radius: 2px;
-}
-
-.navbar a:hover::after {
-    width: 60%;
-}
-
 /* 下拉菜单 */
+.dropdown { position: relative; }
+
 .dropdown-content {
     display: none;
     position: absolute;
@@ -133,36 +94,22 @@ body {
     background: var(--mantle);
     min-width: 180px;
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-    z-index: 1;
     border: 1px solid var(--surface1);
     overflow: hidden;
 }
 
 .dropdown-content a {
     display: block;
-    padding: 0.8rem 1.2rem;
+    padding: 0.7rem 1rem;
     margin: 0;
-    border-bottom: 1px solid var(--surface0);
-    border-radius: 0;
-    font-size: 0.95rem;
-}
-
-.dropdown-content a:last-child {
-    border-bottom: none;
+    font-size: 0.9rem;
 }
 
 .dropdown:hover .dropdown-content {
     display: block;
-    animation: slideDown 0.3s ease;
 }
 
-@keyframes slideDown {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* --- 主内容区 --- */
+/* ========== 主体内容 ========== */
 .center {
     max-width: 1100px;
     margin: 100px auto 40px;
@@ -172,41 +119,37 @@ body {
 .section {
     background: var(--base);
     border-radius: 20px;
-    padding: 3rem;
+    padding: 2.5rem;
     margin-bottom: 3rem;
     border: 1px solid var(--surface0);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     transition: var(--transition);
 }
 
 .section:hover {
-    transform: translateY(-6px);
+    transform: translateY(-4px);
     border-color: var(--surface2);
-    box-shadow: 0 15px 45px rgba(0,0,0,0.3);
 }
 
 h1, h2 {
     color: var(--primary);
-    margin-bottom: 1.8rem;
+    margin-bottom: 1.5rem;
     position: relative;
     display: inline-block;
-    letter-spacing: 0.5px;
 }
 
 h1::after, h2::after {
     content: '';
     position: absolute;
-    bottom: -10px;
+    bottom: -8px;
     left: 0;
     width: 45px;
-    height: 4px;
+    height: 3px;
     background: linear-gradient(90deg, var(--primary), var(--accent));
     border-radius: 10px;
 }
 
 p {
-    margin-bottom: 1.5rem;
-    font-size: 1.05rem;
+    margin-bottom: 1.2rem;
     color: var(--subtext1);
 }
 
@@ -220,119 +163,50 @@ a:hover {
     color: var(--accent);
 }
 
-/* --- 项目展示 --- */
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
-}
-
-.project-card {
-    background: var(--surface0);
-    border-radius: 15px;
-    padding: 1.8rem;
-    border: 1px solid transparent;
-    transition: var(--transition);
-}
-
-.project-card:hover {
-    transform: scale(1.02);
-    border-color: var(--lavender);
-    background: var(--surface1);
-}
-
-.project-card h3 {
-    color: var(--peach);
-    margin-bottom: 1rem;
-}
-
-/* --- 装饰元素 --- */
+/* ========== 分隔线 ========== */
 .cyberpunk-divider {
     height: 1px;
     background: linear-gradient(90deg, transparent, var(--surface2), transparent);
     margin: 3rem 0;
-    position: relative;
 }
 
-.cyberpunk-divider::after {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background: var(--base);
-    padding: 0 10px;
-    font-size: 1.2rem;
-}
-
-.important-note {
-    background: rgba(245, 194, 231, 0.08);
-    border-left: 4px solid var(--accent);
-    padding: 1.2rem;
-    border-radius: 8px;
-    margin: 2rem 0;
-    color: var(--rosewater);
-}
-
-/* --- 图片与交互 --- */
+/* ========== 图片效果 ========== */
 img {
     max-width: 100%;
     border-radius: 12px;
-    transition: var(--transition);
     border: 1px solid var(--surface1);
+    transition: var(--transition);
 }
 
 img:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.35);
 }
 
+/* logo 抖动 */
 .shake:hover {
     animation: shake 0.6s cubic-bezier(.36,.07,.19,.97) both;
 }
 
 @keyframes shake {
-    10%, 90% { transform: translate3d(-1px, 0, 0); }
-    20%, 80% { transform: translate3d(2px, 0, 0); }
-    30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
-    40%, 60% { transform: translate3d(4px, 0, 0); }
+    10%, 90% { transform: translateX(-1px); }
+    20%, 80% { transform: translateX(2px); }
+    30%, 50%, 70% { transform: translateX(-4px); }
+    40%, 60% { transform: translateX(4px); }
 }
 
-/* --- 状态指示器 --- */
-.status-indicator {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-.status-online { background-color: var(--green); box-shadow: 0 0 8px var(--green); }
-.status-offline { background-color: var(--red); box-shadow: 0 0 8px var(--red); }
-
-/* --- 响应式调整 --- */
+/* ========== 响应式 ========== */
 @media (max-width: 768px) {
     .center { margin-top: 80px; padding: 0 15px; }
     .section { padding: 1.5rem; }
     .navbar a { padding: 0.4rem 0.6rem; font-size: 0.85rem; }
 }
 
-/* --- 页脚 --- */
-footer {
-    text-align: center;
-    padding: 3rem;
-    margin-top: 2rem;
-    background: var(--mantle);
-    color: var(--overlay2);
-    border-top: 1px solid var(--surface0);
-}
-
-/* --- 滚动条 --- */
+/* ========== 滚动条美化 ========== */
 ::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: var(--darker); }
+::-webkit-scrollbar-track { background: var(--crust); }
 ::-webkit-scrollbar-thumb { 
-    background: var(--surface1); 
-    border-radius: 5px; 
-    border: 2px solid var(--darker);
+    background: var(--surface1);
+    border-radius: 5px;
 }
 ::-webkit-scrollbar-thumb:hover { background: var(--surface2); }
