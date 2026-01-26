@@ -1,4 +1,4 @@
-# 本仓库是`https://xhdndmm.net/`的源代码
+# 本仓库是`https://xhdndmm.net/`的源代码仓库
 
 ## 项目结构
 ```
