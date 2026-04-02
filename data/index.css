@@ -1,0 +1,212 @@
+/*
+[https://github.com/xhdndmm/web]
+[https://xhdndmm.net/]
+------
+使用了[https://catppuccin.com/palette/]的配色
+*/
+
+/* ========== Catppuccin Mocha 变量 ========== */
+:root {
+    --rosewater: #f5e0dc;
+    --pink: #f5c2e7;
+    --mauve: #cba6f7;
+    --red: #f38ba8;
+    --peach: #fab387;
+    --green: #a6e3a1;
+    --sapphire: #74c7ec;
+
+    --text: #cdd6f4;
+    --subtext1: #bac2de;
+    --surface2: #585b70;
+    --surface1: #45475a;
+    --surface0: #313244;
+    --base: #1e1e2e;
+    --mantle: #181825;
+    --crust: #11111b;
+
+    --primary: var(--mauve);
+    --secondary: var(--sapphire);
+    --accent: var(--pink);
+
+    --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ========== 基础 ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', 'Microsoft YaHei', sans-serif;
+    background: radial-gradient(circle at top right, var(--mantle), var(--crust));
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* 粒子背景 */
+#particles-js {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    opacity: 0.5;
+}
+
+/* ========== 导航栏 ========== */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+    background: rgba(24, 24, 37, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--surface0);
+    z-index: 1000;
+}
+
+.navbar a {
+    color: var(--subtext1);
+    text-decoration: none;
+    padding: 0.5rem 1.2rem;
+    margin: 0 0.4rem;
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.navbar a:hover {
+    color: var(--primary);
+    background: var(--surface0);
+}
+
+/* 下拉菜单 */
+.dropdown { position: relative; }
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 110%;
+    left: 0;
+    background: var(--mantle);
+    min-width: 180px;
+    border-radius: 12px;
+    border: 1px solid var(--surface1);
+    overflow: hidden;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 0.7rem 1rem;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* ========== 主体内容 ========== */
+.center {
+    max-width: 1100px;
+    margin: 100px auto 40px;
+    padding: 0 24px;
+}
+
+.section {
+    background: var(--base);
+    border-radius: 20px;
+    padding: 2.5rem;
+    margin-bottom: 3rem;
+    border: 1px solid var(--surface0);
+    transition: var(--transition);
+}
+
+.section:hover {
+    transform: translateY(-4px);
+    border-color: var(--surface2);
+}
+
+h1, h2 {
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+h1::after, h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 45px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    border-radius: 10px;
+}
+
+p {
+    margin-bottom: 1.2rem;
+    color: var(--subtext1);
+}
+
+a {
+    color: var(--secondary);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--accent);
+}
+
+/* ========== 分隔线 ========== */
+.cyberpunk-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--surface2), transparent);
+    margin: 3rem 0;
+}
+
+/* ========== 图片效果 ========== */
+img {
+    max-width: 100%;
+    border-radius: 12px;
+    border: 1px solid var(--surface1);
+    transition: var(--transition);
+}
+
+img:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+}
+
+/* logo 抖动 */
+.shake:hover {
+    animation: shake 0.6s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake {
+    10%, 90% { transform: translateX(-1px); }
+    20%, 80% { transform: translateX(2px); }
+    30%, 50%, 70% { transform: translateX(-4px); }
+    40%, 60% { transform: translateX(4px); }
+}
+
+/* ========== 响应式 ========== */
+@media (max-width: 768px) {
+    .center { margin-top: 80px; padding: 0 15px; }
+    .section { padding: 1.5rem; }
+    .navbar a { padding: 0.4rem 0.6rem; font-size: 0.85rem; }
+}
+
+/* ========== 滚动条美化 ========== */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--crust); }
+::-webkit-scrollbar-thumb { 
+    background: var(--surface1);
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--surface2); }

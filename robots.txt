@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: 
+Sitemap: https://xhdndmm.net/sitemap.xml
+Disallow: /data/
+Disallow: /.git/
+Disallow: /counter/
+Disallow: /time_api/
+Disallow: /server_status
