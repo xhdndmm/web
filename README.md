@@ -22,12 +22,12 @@ web
 
 ## 协议
 ### 内容部分
-本仓库中的**内容部分**（包括但不限于）：
+本仓库中的**内容部分**：
 
 - `index.html` 中的 `meta`、`title`、`a`、`h1`、`h2`、`p` 标签内的文本内容  
-- `logo.png`
 - `favicon.ico`
 - `sitemap.xml`
+- `robots.txt`
 
 均采用 [CC BY 4.0](./LICENSE) 协议进行许可。  
 使用上述内容时，需遵守 CC BY 4.0 的署名、标明修改及附带许可证链接等要求。
