@@ -24,7 +24,7 @@ web
 ### 内容部分
 本仓库中的**内容部分**：
 
-- `index.html` 中的 `meta`、`title`、`a`、`h1`、`h2`、`p` 标签内的文本内容  
+- `index.html` 
 - `favicon.ico`
 - `sitemap.xml`
 - `robots.txt`
